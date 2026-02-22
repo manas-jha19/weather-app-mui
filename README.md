@@ -4,6 +4,9 @@ A modern and responsive weather dashboard built using **React**, **Vite**, and *
 This application allows users to search for any city and view real-time weather information with dynamic UI updates, animated elements, and a clean glass-style interface.
 
 ---
+## Live Demo
+
+[🚀 View Live Project](https://weather-app-e9j2iziw5-manasjha2233-2266s-projects.vercel.app)
 
 ## Features
 
