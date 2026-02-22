@@ -38,12 +38,10 @@ export default function WeatherApp(){
         }
     }
     
-    return(<div style={{
-       
-      height: "100vh",
-      margin: 0,
-      width: "100%" ,
-      backgroundImage: `url(${getBackground()})`,
+    return(<div  style={{
+      minHeight: "100vh",
+      width: "100%",
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),url(${getBackground()})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
@@ -51,8 +49,10 @@ export default function WeatherApp(){
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
 
+      paddingTop: "80px",     // 👈 top breathing space
+      paddingBottom: "60px",  // 👈 bottom breathing space
+      gap: "40px"
     }}>
         <SearchBox AllDetails={setAllDetails} />
         <InfoBox Details={weather} />

@@ -1,10 +1,12 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function SearchBox({AllDetails}){
     let [city , setCity] = useState("");
     let [error , setError] = useState(false);
+    let [loading , setLoading] = useState(false);
 
     const Api_key = import.meta.env.VITE_WEATHER_API_KEY
     const Api_url = import.meta.env.VITE_WEATHER_API_URL
@@ -39,12 +41,16 @@ export default function SearchBox({AllDetails}){
 
       let SubmitForm = async(event)=>{
         try{
+             setError(false);
+            setLoading(true);  
          event.preventDefault();
          setCity('')
          let info = await getApi();
          AllDetails (info);
         }catch(err){
             setError(true);
+        }finally{
+            setLoading(false);
         }
         
       }
@@ -52,12 +58,34 @@ export default function SearchBox({AllDetails}){
 
      return(
     <div>
-    <form onSubmit={SubmitForm}>
-        <TextField id="city" label="Search city" value={city} onChange={(e)=>setCity(e.target.value)} variant="outlined" required sx={{label:{color:'black'},
+    <form onSubmit={SubmitForm}  style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}>
+        <TextField id="city" label="Search city" value={city} onChange={(e)=>setCity(e.target.value)} variant="outlined" required 
+        sx={{
+          width: "280px",
+          background: "rgba(255,255,255,0.35)",
+          borderRadius: 2,
+          backdropFilter: "blur(10px)"
         }} />
         <br></br><br></br>
-        <Button variant="contained" type='submit' >Search</Button>
+        <Button variant="contained" type='submit' 
+        sx={{
+          borderRadius: 3,
+          fontWeight: "bold",
+          px: 4,
+          py: 1,
+          boxShadow: "0 6px 18px rgba(0,0,0,0.4)"
+        }} >Search</Button>
         {error && <p style={{color:"red"}}>No such as city</p>}
+        {loading && (
+     <CircularProgress
+            size={30}
+            sx={{ color: "white", mt: 2 }}
+     />
+)}
     </form>
     </div>)
 }

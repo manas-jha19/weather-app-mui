@@ -4,3 +4,41 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.sun-rotate {
+  animation: spinSun 8s linear infinite;
+  filter: drop-shadow(0 0 6px gold);
+}
+
+@keyframes spinSun {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cloud-float {
+  animation: floatCloud 4s ease-in-out infinite;
+}
+
+@keyframes floatCloud {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(8px); }
+}
+.rain-drop {
+  animation: rainBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes rainBounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(6px); }
+}
+.thunder-flash {
+  animation: flash 2s infinite;
+}
+
+@keyframes flash {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0.2; }
+}
