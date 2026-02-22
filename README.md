@@ -68,6 +68,7 @@ This application allows users to search for any city and view real-time weather 
 
 ## 📂 Project Structure
 
+```
 weather-app/
 │
 ├── public/
@@ -100,3 +101,4 @@ weather-app/
 ├── package-lock.json
 ├── vite.config.js
 └── README.md
+```
